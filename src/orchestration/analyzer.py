@@ -130,8 +130,8 @@ def analyze_document(
     try:
         texto_raw, paginas, tipo_fuente = extract_text_auto(
             file_path=file_path,
-            ocr_dpi=config.ollama.ocr_dpi,
-            ocr_lang=config.ollama.ocr_lang,
+            ocr_dpi=config.ocr.dpi,
+            ocr_lang=config.ocr.languages,
             force_ocr=force_ocr
         )
     except Exception as e:
