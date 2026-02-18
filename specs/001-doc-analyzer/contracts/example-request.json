@@ -1,0 +1,21 @@
+{
+  "_comment": "Example HTTP request to Ollama local API for document analysis",
+  "method": "POST",
+  "url": "http://localhost:11434/api/generate",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "model": "llama3.2:3b",
+    "prompt": "REGLAS FUNDAMENTALES:\n\n1. VERACIDAD ABSOLUTA\n   - No inventes datos. Extrae ÚNICAMENTE información presente en el texto del documento.\n   - Si una categoría no tiene información disponible, devuélvela vacía (lista vacía [] o null).\n   - NO asumas, NO inferas, NO especules sobre información ausente.\n\n2. FORMATO JSON ESTRICTO\n   - Devuelve SIEMPRE un único JSON válido que cumpla el esquema exacto definido abajo.\n   - NO añadas texto explicativo fuera del JSON.\n   - NO uses markdown code fences (```json) - solo el JSON puro.\n\n[... resto de prompts truncados por brevedad ...]\n\nDOCUMENTO:\n──────────────────────────────────────────────────────────────\nCONTRATO DE TRABAJO\n\nEntre la empresa ACME CORP S.A. (CIF: A12345678), en adelante \"la Empresa\",\ny D. Juan Pérez García (DNI: 12345678Z), en adelante \"el Trabajador\", se\nacuerda el presente contrato laboral con las siguientes cláusulas:\n\nPRIMERA: Inicio y duración\nEl presente contrato tendrá vigencia desde el 1 de marzo de 2026 hasta el\n28 de febrero de 2027, renovable tácitamente por periodos anuales.\n\nSEGUNDA: Retribución\nEl Trabajador percibirá un salario bruto anual de 30.000€ (treinta mil euros)\npagaderos en 14 pagas (12 mensuales + 2 extras).\n\nTERCERA: Jornada\nLa jornada será de 40 horas semanales distribuidas de lunes a viernes.\n\nCUARTA: Vacaciones\nEl Trabajador tendrá derecho a 30 días naturales de vacaciones anuales.\n\nQUINTA: No competencia\nEl Trabajador se compromete a no realizar actividades que compitan con la Empresa\ndurante la vigencia del contrato y 2 años después de su finalización.\n──────────────────────────────────────────────────────────────",
+    "temperature": 0.2,
+    "stream": false,
+    "format": "json",
+    "options": {
+      "num_ctx": 4096,
+      "num_predict": 2048
+    }
+  },
+  "expected_status": 200,
+  "timeout": 60000
+}
