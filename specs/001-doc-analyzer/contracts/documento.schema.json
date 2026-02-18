@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Documento",
+  "description": "Metadatos del archivo cargado por el usuario",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único (SHA-256 truncado a 16 chars hex)",
+      "pattern": "^[a-f0-9]{16}$",
+      "examples": ["a3f5d8e1b2c9f7e4"]
+    },
+    "nombre": {
+      "type": "string",
+      "description": "Nombre del archivo original",
+      "minLength": 1,
+      "maxLength": 255,
+      "examples": ["contrato-laboral-2024.pdf", "nomina-enero.docx"]
+    },
+    "tipo_fuente": {
+      "type": "string",
+      "description": "Método de extracción de texto utilizado",
+      "enum": ["pdf_native", "pdf_ocr", "docx", "image", "txt"]
+    },
+    "paginas": {
+      "type": ["integer", "null"],
+      "description": "Número de páginas del documento (null si no aplica)",
+      "minimum": 1,
+      "maximum": 1000,
+      "examples": [12, 5, null]
+    },
+    "bytes": {
+      "type": "integer",
+      "description": "Tamaño del archivo en bytes",
+      "minimum": 1,
+      "maximum": 100000000,
+      "examples": [1234567, 5678901]
+    },
+    "idioma_detectado": {
+      "type": ["string", "null"],
+      "description": "Código de idioma ISO 639-1 detectado",
+      "pattern": "^[a-z]{2}$",
+      "examples": ["es", "en", "fr", null]
+    },
+    "ts_ingesta": {
+      "type": "string",
+      "description": "Timestamp ISO 8601 de cuando se cargó el documento",
+      "format": "date-time",
+      "examples": ["2026-02-18T14:30:00Z"]
+    }
+  },
+  "required": ["id", "nombre", "tipo_fuente", "bytes", "ts_ingesta"],
+  "additionalProperties": false
+}

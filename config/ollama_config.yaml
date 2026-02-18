@@ -1,0 +1,41 @@
+# ============================================
+# Ollama Configuration - Analizador de Documentos Legales
+# ============================================
+# LLM Local Settings
+
+# Ollama Server
+endpoint: "http://localhost:11434"
+health_check_timeout: 5  # seconds
+
+# Model Configuration
+model: "llama3.2:3b"
+# Alternatives:
+#   - "phi3:mini" (lightweight, 1GB, lower quality)
+#   - "mistral:7b" (high quality, 5GB, requires more resources)
+
+# Generation Parameters
+temperature: 0.2  # 0.1-0.5 (lower = more deterministic, higher = more creative)
+max_tokens: 4000  # Context window limit for llama3.2:3b
+
+# Retry Configuration
+max_retries: 2  # Number of retries for invalid JSON responses
+retry_delay: 1.0  # seconds between retries
+
+# OCR Configuration
+ocr:
+  enabled: true
+  dpi: 300  # 200-400 recommended (higher = better quality, slower)
+  languages: "spa"  # Options: "spa", "eng", "spa+eng"
+  confidence_threshold: 0.5  # Minimum OCR confidence to accept result
+
+# Document Processing
+chunking:
+  enabled: true
+  max_chunk_size: 3500  # tokens (leave buffer for prompt overhead)
+  overlap: 200  # tokens overlap between chunks
+
+# Export
+export:
+  enabled: true
+  default_format: "json"
+  include_metadata: true

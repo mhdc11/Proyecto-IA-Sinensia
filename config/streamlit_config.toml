@@ -1,0 +1,23 @@
+# ============================================
+# Streamlit Configuration - Analizador de Documentos Legales
+# ============================================
+
+[server]
+port = 8501
+headless = false
+enableCORS = false
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false  # Privacy: no telemetry
+
+[theme]
+primaryColor = "#1f77b4"  # Blue for primary actions
+backgroundColor = "#ffffff"  # White background
+secondaryBackgroundColor = "#f0f2f6"  # Light gray for cards
+textColor = "#262730"  # Dark gray for text
+font = "sans serif"
+
+[client]
+showErrorDetails = true
+toolbarMode = "minimal"

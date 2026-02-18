@@ -34,3 +34,63 @@ logs/
 # Temporary files
 *.tmp
 *.temp
+
+# ============================================
+# Python Project - Analizador de Documentos
+# ============================================
+
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.virtualenv
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.hypothesis/
+
+# Project-specific data (local storage)
+data/duplas.json
+data/uploads/
+data/cache/
+*.db
+*.sqlite3
+
+# Test documents with real/sensitive data (never commit)
+test_documents/real_docs/
+*.corrupted.*.json
+
+# Streamlit
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# Jupyter (if used for testing)
+.ipynb_checkpoints
+*.ipynb
+
+# mypy / type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Profiling
+*.prof
+*.lprof

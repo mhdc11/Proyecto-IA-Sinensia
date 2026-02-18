@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Analisis",
+  "description": "Resultado estructurado del análisis de un documento con las 8 categorías mandatorias",
+  "type": "object",
+  "properties": {
+    "tipo_documento": {
+      "type": "string",
+      "description": "Clasificación del tipo de documento",
+      "minLength": 1,
+      "maxLength": 50,
+      "examples": ["contrato_laboral", "convenio", "nomina", "desconocido"]
+    },
+    "partes": {
+      "type": "array",
+      "description": "Entidades/personas involucradas",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "maxItems": 20,
+      "examples": [["Empresa XYZ S.A.", "Juan Pérez García", "NIF: 12345678A"]]
+    },
+    "fechas": {
+      "type": "array",
+      "description": "Fechas relevantes estructuradas",
+      "items": {
+        "type": "object",
+        "properties": {
+          "etiqueta": {
+            "type": "string",
+            "description": "Tipo de fecha (ej: Inicio, Fin, Vencimiento)",
+            "minLength": 1,
+            "maxLength": 50,
+            "examples": ["Inicio", "Fin", "Vencimiento"]
+          },
+          "valor": {
+            "type": "string",
+            "description": "Fecha en formato ISO (YYYY-MM-DD) o literal del documento",
+            "minLength": 1,
+            "maxLength": 100,
+            "examples": ["2026-03-01", "primer trimestre 2024"]
+          }
+        },
+        "required": ["etiqueta", "valor"],
+        "additionalProperties": false
+      },
+      "maxItems": 30
+    },
+    "importes": {
+      "type": "array",
+      "description": "Importes y datos económicos",
+      "items": {
+        "type": "object",
+        "properties": {
+          "concepto": {
+            "type": "string",
+            "description": "Descripción del importe",
+            "minLength": 1,
+            "maxLength": 100,
+            "examples": ["Salario bruto anual", "Indemnización", "Bonus"]
+          },
+          "valor": {
+            "type": ["number", "null"],
+            "description": "Valor numérico del importe (null si no se puede parsear)",
+            "minimum": 0,
+            "examples": [30000.0, 5000.5, null]
+          },
+          "moneda": {
+            "type": ["string", "null"],
+            "description": "Código de moneda ISO 4217 o símbolo literal",
+            "maxLength": 10,
+            "examples": ["EUR", "USD", "€", "$", null]
+          }
+        },
+        "required": ["concepto"],
+        "additionalProperties": false
+      },
+      "maxItems": 30
+    },
+    "obligaciones": {
+      "type": "array",
+      "description": "Enunciados de deberes y compromisos",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "maxItems": 50,
+      "examples": [["El trabajador se compromete a dedicar jornada completa de 40 horas semanales"]]
+    },
+    "derechos": {
+      "type": "array",
+      "description": "Facultades, beneficios y permisos",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "maxItems": 50,
+      "examples": [["El trabajador tiene derecho a 30 días de vacaciones anuales"]]
+    },
+    "riesgos": {
+      "type": "array",
+      "description": "Cláusulas sensibles, alertas y penalizaciones",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "maxItems": 30,
+      "examples": [["Cláusula de no competencia: prohibida actividad similar durante 2 años post-finalización"]]
+    },
+    "resumen_bullets": {
+      "type": "array",
+      "description": "Resumen ejecutivo en bullets (5-10 items)",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "maxItems": 10,
+      "examples": [["Contrato indefinido a jornada completa (40h/semana)", "Salario bruto anual de 30.000€"]]
+    },
+    "notas": {
+      "type": "array",
+      "description": "Observaciones técnicas y advertencias",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "maxItems": 10,
+      "examples": [["Bonus variable no tiene importe especificado en el documento"]]
+    },
+    "confianza_aprox": {
+      "type": "number",
+      "description": "Nivel de confianza heurístico del análisis (0.0-1.0)",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "examples": [0.9, 0.75, 0.5]
+    }
+  },
+  "required": [
+    "tipo_documento",
+    "partes",
+    "fechas",
+    "importes",
+    "obligaciones",
+    "derechos",
+    "riesgos",
+    "resumen_bullets",
+    "notas",
+    "confianza_aprox"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,59 @@
+{
+  "_comment": "Example valid response from Ollama local API after successful document analysis",
+  "model": "llama3.2:3b",
+  "created_at": "2026-02-18T14:35:22.123Z",
+  "response": "{\"tipo_documento\": \"contrato_laboral\", \"partes\": [\"ACME CORP S.A. (CIF: A12345678)\", \"Juan Pérez García (DNI: 12345678Z)\"], \"fechas\": [{\"etiqueta\": \"Inicio\", \"valor\": \"2026-03-01\"}, {\"etiqueta\": \"Fin\", \"valor\": \"2027-02-28\"}], \"importes\": [{\"concepto\": \"Salario bruto anual\", \"valor\": 30000.0, \"moneda\": \"EUR\"}], \"obligaciones\": [\"El Trabajador se compromete a no realizar actividades que compitan con la Empresa durante la vigencia del contrato y 2 años después de su finalización\"], \"derechos\": [\"El Trabajador tendrá derecho a 30 días naturales de vacaciones anuales\"], \"riesgos\": [\"Cláusula de no competencia: prohibida actividad similar durante vigencia + 2 años post-finalización\"], \"resumen_bullets\": [\"Contrato laboral con renovación tácita anual\", \"Vigencia inicial: 1 marzo 2026 - 28 febrero 2027\", \"Salario bruto anual de 30.000€ en 14 pagas\", \"Jornada de 40 horas semanales (lunes a viernes)\", \"30 días de vacaciones anuales\", \"Cláusula de no competencia por 2 años tras finalización\"], \"notas\": [], \"confianza_aprox\": 0.95}",
+  "done": true,
+  "context": [
+    "_truncated_for_brevity"
+  ],
+  "total_duration": 3245678901,
+  "load_duration": 123456789,
+  "prompt_eval_count": 1024,
+  "prompt_eval_duration": 987654321,
+  "eval_count": 256,
+  "eval_duration": 2134567891,
+  "_parsed_response": {
+    "tipo_documento": "contrato_laboral",
+    "partes": [
+      "ACME CORP S.A. (CIF: A12345678)",
+      "Juan Pérez García (DNI: 12345678Z)"
+    ],
+    "fechas": [
+      {
+        "etiqueta": "Inicio",
+        "valor": "2026-03-01"
+      },
+      {
+        "etiqueta": "Fin",
+        "valor": "2027-02-28"
+      }
+    ],
+    "importes": [
+      {
+        "concepto": "Salario bruto anual",
+        "valor": 30000.0,
+        "moneda": "EUR"
+      }
+    ],
+    "obligaciones": [
+      "El Trabajador se compromete a no realizar actividades que compitan con la Empresa durante la vigencia del contrato y 2 años después de su finalización"
+    ],
+    "derechos": [
+      "El Trabajador tendrá derecho a 30 días naturales de vacaciones anuales"
+    ],
+    "riesgos": [
+      "Cláusula de no competencia: prohibida actividad similar durante vigencia + 2 años post-finalización"
+    ],
+    "resumen_bullets": [
+      "Contrato laboral con renovación tácita anual",
+      "Vigencia inicial: 1 marzo 2026 - 28 febrero 2027",
+      "Salario bruto anual de 30.000€ en 14 pagas",
+      "Jornada de 40 horas semanales (lunes a viernes)",
+      "30 días de vacaciones anuales",
+      "Cláusula de no competencia por 2 años tras finalización"
+    ],
+    "notas": [],
+    "confianza_aprox": 0.95
+  }
+}
